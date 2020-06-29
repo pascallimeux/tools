@@ -22,7 +22,7 @@ func TestGenerateCipher(t *testing.T) {
 }
 
 func TestGenerateCipherFromKey(t *testing.T) {
-	key := "0xf56992438749ff938a82e91a3663623456cbfaac90d433a0420e5520dcb1d6b0"
+	key := "0xa6ad807cab657b88bee4e13a9c784c01e3f26a9c4f10aa5a16684afc973599de"
 	cipher, err := crypto.NewSecp256k1CipherFromPrivKey(key)
 	if err != nil {
 		t.Error(err.Error())
