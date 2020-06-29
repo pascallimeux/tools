@@ -3,8 +3,10 @@ package crypto
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"encoding/hex"
 	"fmt"
 	"os/exec"
+	"strings"
 )
 
 //GenerateNounceStr generate a string nounce with a specific len
@@ -76,4 +78,17 @@ func DecryptMessage(cipherMsg, cipherKey, privRSAKey []byte) ([]byte, error) {
 	}
 	AEScipher := NewAESCipherWithKey(AESKey)
 	return AEScipher.Decrypt(cipherMsg)
+}
+
+func bytes2Hexa(b []byte) string {
+	h := make([]byte, hex.EncodedLen(len(b)))
+	hex.Encode(h, b)
+	return fmt.Sprintf("0x%s", h)
+}
+
+func hexa2Bytes(h string) ([]byte, error) {
+	if strings.HasPrefix(h, "0x") {
+		h = h[2:]
+	}
+	return hex.DecodeString(h)
 }

@@ -10,6 +10,7 @@ var (
 	Info *log.Logger
 	Warning *log.Logger
 	Error *log.Logger
+	Fatal *log.Logger
 )
 
 func init(){
