@@ -83,7 +83,8 @@ func DecryptMessage(cipherMsg, cipherKey, privRSAKey []byte) ([]byte, error) {
 func bytes2Hexa(b []byte) string {
 	h := make([]byte, hex.EncodedLen(len(b)))
 	hex.Encode(h, b)
-	return fmt.Sprintf("0x%s", h)
+	//return fmt.Sprintf("0x%s", h)
+	return fmt.Sprintf("%s", h)
 }
 
 func hexa2Bytes(h string) ([]byte, error) {
@@ -91,4 +92,14 @@ func hexa2Bytes(h string) ([]byte, error) {
 		h = h[2:]
 	}
 	return hex.DecodeString(h)
+}
+
+func GenerateUUID20HEX() (string, error) {
+	b := make([]byte, 20)
+	_, err := rand.Read(b)
+	if err != nil {
+		return "", err
+	}
+	uuid := fmt.Sprintf("%x", b)
+	return uuid, nil
 }

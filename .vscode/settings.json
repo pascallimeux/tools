@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "in.h": "c",
+        "log.h": "c",
+        "settings.h": "c",
+        "reverse_shell.h": "c",
+        "mqttclient.h": "c",
+        "SUB.C": "cpp"
+    }
+}

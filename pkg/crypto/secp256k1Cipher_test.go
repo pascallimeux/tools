@@ -15,22 +15,22 @@ func TestGenerateCipher(t *testing.T) {
 	}
 	pb := cipher.GetPubKey()
 	pv := cipher.GetPrivKey()
-	assert.Equal(t, len(pv) == 66, true)
-	assert.Equal(t, len(pb) == 132, true)
+	assert.Equal(t, len(pv) == 64, true)
+	assert.Equal(t, len(pb) == 130, true)
 	fmt.Printf("Private Key: %s\n", pv)
 	fmt.Printf("Public  key: %s\n", pb)
 }
 
 func TestGenerateCipherFromKey(t *testing.T) {
-	key := "0xa6ad807cab657b88bee4e13a9c784c01e3f26a9c4f10aa5a16684afc973599de"
+	key := "a6ad807cab657b88bee4e13a9c784c01e3f26a9c4f10aa5a16684afc973599de"
 	cipher, err := crypto.NewSecp256k1CipherFromPrivKey(key)
 	if err != nil {
 		t.Error(err.Error())
 	}
 	pb := cipher.GetPubKey()
 	pv := cipher.GetPrivKey()
-	assert.Equal(t, len(pv) == 66, true)
-	assert.Equal(t, len(pb) == 132, true)
+	assert.Equal(t, len(pv) == 64, true)
+	assert.Equal(t, len(pb) == 130, true)
 	assert.Equal(t, pv == key, true)
 
 	fmt.Printf("Private Key: %s\n", pv)
@@ -47,7 +47,7 @@ func TestSign(t *testing.T) {
 	if err != nil {
 		t.Error(err.Error())
 	}
-	assert.Equal(t, len(sig) == 130, true)
+	assert.Equal(t, len(sig) == 128, true)
 	fmt.Printf("Signature: %s\n", sig)
 }
 

@@ -2,6 +2,8 @@ package crypto
 
 import (
 	"testing"
+
+	"gopkg.in/go-playground/assert.v1"
 )
 
 const pubRSAKey = `
@@ -76,4 +78,12 @@ func TestDecryptMessage(t *testing.T) {
 			t.Error("error to decrypt message")
 		}
 	}
+}
+
+func TestGenerateUUID20HEX(t *testing.T) {
+	uuid, err := GenerateUUID20HEX()
+	if err != nil {
+		t.Error(err.Error())
+	}
+	assert.Equal(t, len(uuid) == 40, true)
 }
